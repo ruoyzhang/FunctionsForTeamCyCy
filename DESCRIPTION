@@ -1,0 +1,10 @@
+Package: CyCyFns
+Type: Package
+Title: Functions created to help team CyCy make their fabulous ShinyApp
+Version: 0.1.0
+Author: Team CyCy
+Maintainer: Ruoyang Zhang <ruoyang.zhang@polytechnique.fr>
+Description: Functions created to help team CyCy make their fabulous Shiny App.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
