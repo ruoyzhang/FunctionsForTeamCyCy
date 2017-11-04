@@ -12,7 +12,7 @@
 #' globalaverage(data_all)
 #' }
 globalaverage <- function(dataset){
-  global <- dataset %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>%  setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Global"))
+  global <- dataset %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>%  data.table::setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Global"))
   global$rn <- c(0, 5, 10, 15, 20, 21.10, 25, 30, 35, 40, 42.20)
   colnames(global)[1]<-("milestone_km")
   return(global)

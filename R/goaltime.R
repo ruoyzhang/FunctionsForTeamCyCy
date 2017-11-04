@@ -13,15 +13,15 @@
 #' goaltime(data_all)
 #' }
 goaltime <- function(goaltime, dataset){
-  goal_time_1 <- dataset %>% filter(Official.Time.1 > goaltime-30 & Official.Time.1 < goaltime-15) %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>% setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Goal_time_15to30_mins_Faster"))
+  goal_time_1 <- dataset %>% filter(Official.Time.1 > goaltime-30 & Official.Time.1 < goaltime-15) %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>% data.table::setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Goal_time_15to30_mins_Faster"))
   goal_time_1$rn <- c(0, 5, 10, 15, 20, 21.10, 25, 30, 35, 40, 42.20)
   colnames(goal_time_1)[1]<-("milestone_km")
 
-  goal_time_2 <- dataset %>% filter(Official.Time.1 > goaltime-15 & Official.Time.1 < goaltime) %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>% setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Goal_time_0to15_mins_Faster"))
+  goal_time_2 <- dataset %>% filter(Official.Time.1 > goaltime-15 & Official.Time.1 < goaltime) %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>% data.table::setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Goal_time_0to15_mins_Faster"))
   goal_time_2$rn <- c(0, 5, 10, 15, 20, 21.10, 25, 30, 35, 40, 42.20)
   colnames(goal_time_2)[1]<-("milestone_km")
 
-  goal_time_3 <- dataset %>% filter(Official.Time.1 > goaltime & Official.Time.1 < goaltime+15) %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>% setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Goal_time_0to15_mins_Slower"))
+  goal_time_3 <- dataset %>% filter(Official.Time.1 > goaltime & Official.Time.1 < goaltime+15) %>% mutate(X0K.1 = rep(0)) %>% select("X0K.1", c(13:22)) %>% lapply(mean) %>% as.data.frame() %>% `row.names<-`(c("mean_time")) %>% t() %>% as.data.frame() %>% data.table::setDT(keep.rownames=TRUE) %>% mutate(Label = rep("Goal_time_0to15_mins_Slower"))
   goal_time_3$rn <- c(0, 5, 10, 15, 20, 21.10, 25, 30, 35, 40, 42.20)
   colnames(goal_time_3)[1]<-("milestone_km")
 
